@@ -3,7 +3,7 @@ import GithibProvider from 'next-auth/providers/github'
 export const authOptions = {
     providers: [
         GithibProvider({
-            clientId: process.env.GITGUB_CLIENT_ID!,
+            clientId: process.env.GITHUB_CLIENT_ID!,
             clientSecret: process.env.GITHUB_SECRET!,
             httpOptions: {
                 timeout: 100000
