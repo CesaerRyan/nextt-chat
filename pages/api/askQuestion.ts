@@ -27,6 +27,7 @@ export default async function handler(
     // ChatGPT Query 
 
     const response = await query(prompt, chatId, model)
+    console.log(response)
     const message: Message = {
         text: response || 'ChatGPT 无法回答',
         createdAt: admin.firestore.Timestamp.now(),
@@ -36,12 +37,15 @@ export default async function handler(
             avatar: 'https://links.papareact.com/89k'
         }
     }
-    await adminDb.collection('users')
+    await adminDb.collection('users').get()
+
+    const r = await adminDb.collection('users')
         .doc(session.user.email)
         .collection('chats')
         .doc(chatId)
         .collection('messages')
         .add(message)
+    console.log("🚀 ~ file: askQuestion.ts:49 ~ r", r)
 
     res.status(200).json({ answer: message.text })
 }

@@ -10,7 +10,10 @@ const query = async (prompt: string, chatId: string, model: string) => {
         top_p: 1,
         frequency_penalty: 0,
         presence_penalty: 0
-    }).then(res => res.data.choices[0].text).catch(err => `ChatGPT 无法获得答案，错误信息(${err.message})`)
+    }).then(res => {
+        console.log(res.data.choices)
+        res.data.choices[0].text
+    }).catch(err => `ChatGPT 无法获得答案，错误信息(${err.message})`)
     return res
 }
 

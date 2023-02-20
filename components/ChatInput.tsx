@@ -42,12 +42,20 @@ function ChatInput({ chatId }: Props) {
     };
 
     const notification = toast.loading(" ChatGPT 正在思考...");
+
     await addDoc(
-      collection(db, "users", session?.user?.email!, "chats", "messages"),
+      collection(
+        db,
+        "users",
+        session?.user?.email!,
+        "chats",
+        chatId,
+        "messages"
+      ),
       message
     );
 
-    await fetch("api/askQuestion", {
+    await fetch("/api/askQuestion", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,8 +66,9 @@ function ChatInput({ chatId }: Props) {
         model,
         session,
       }),
-    }).then(() => {
+    }).then((d) => {
       // Toast notification to say successful
+      console.log(d);
       toast.success("ChatGPT 回复了", {
         id: notification,
       });
