@@ -12,7 +12,7 @@ const query = async (prompt: string, chatId: string, model: string) => {
         presence_penalty: 0
     }).then(res => {
         console.log(res.data.choices)
-        res.data.choices[0].text
+        return res.data.choices[0].text
     }).catch(err => `ChatGPT 无法获得答案，错误信息(${err.message})`)
     return res
 }

@@ -1,9 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { adminDb } from '@/firebaseAdmin'
+
 import query from '@/lib/queryApi'
 import { Message } from '@/typing'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import admin from 'firebase-admin'
+import { adminDb } from '@/firebaseAdmin'
+
 type Data = {
     answer: string
 }
@@ -27,7 +29,7 @@ export default async function handler(
     // ChatGPT Query 
 
     const response = await query(prompt, chatId, model)
-    console.log(response)
+
     const message: Message = {
         text: response || 'ChatGPT 无法回答',
         createdAt: admin.firestore.Timestamp.now(),
@@ -36,9 +38,19 @@ export default async function handler(
             name: 'ChatGPT',
             avatar: 'https://links.papareact.com/89k'
         }
-    }
-    await adminDb.collection('users').get()
+    };
 
+
+
+    await adminDb
+        .collection("test")
+        .add({
+            t: Date.now(),
+        })
+        .then((d) => {
+            console.log(d);
+        });
+    console.log('getting adminDb')
     const r = await adminDb.collection('users')
         .doc(session.user.email)
         .collection('chats')
