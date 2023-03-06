@@ -32,7 +32,7 @@ export default async function RootLayout({
               </div>
 
               <ClientProvider />
-              <div className="bg-[#343541] flex-1">{children}</div>
+              <div className="bg-[#343541] flex-1 ">{children}</div>
             </div>
           )}
         </SessionProvider>

@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next  dev",
+    "devs": "NODE_OPTIONS='--inspect'  next  dev ",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -15,12 +16,12 @@
     "@next-auth/supabase-adapter": "^0.2.1",
     "@next/font": "13.1.6",
     "@supabase/supabase-js": "^2.8.0",
-    "@types/next": "^9.0.0",
     "@types/node": "18.13.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "18.0.10",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
+    "eventsource-parser": "^0.1.0",
     "firebase": "^9.17.1",
     "firebase-admin": "^11.5.0",
     "https-proxy-agent": "^5.0.1",
@@ -29,12 +30,15 @@
     "next": "13.1.6",
     "next-auth": "^4.19.2",
     "nodemailer": "^6.9.1",
-    "openai": "^3.1.0",
+    "openai": "^3.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.1.1",
     "react-hot-toast": "^2.4.0",
-    "typescript": "4.9.5"
+    "react-select": "^5.7.0",
+    "swr": "^2.0.4",
+    "typescript": "4.9.5",
+    "zustand": "^4.3.5"
   },
   "devDependencies": {
     "@types/cookie": "^0.5.1",

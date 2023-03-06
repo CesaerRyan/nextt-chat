@@ -20,8 +20,10 @@ function ChatRow({id}:Props) {
 
 
   const [messages] = useCollection(
-    collection(db,'users',session?.user?.email!, 'chats',id,'messages'),
-
+    query(
+    collection(db,'users',session?.user?.email!, 'chats',id,'messages'
+    ),
+    orderBy('createdAt','asc'))
   )
 
 
